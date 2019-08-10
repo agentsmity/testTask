@@ -1,0 +1,25 @@
+version: '3.2'
+
+services:
+  test:
+    image: test_image
+    volumes:
+      - ./data/home:/home/testuser
+      - ./data/conf/supervisor:/etc/supervisor/conf.d
+    links:
+      - mysql
+      - redis
+    tty: true
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_PASSWORD=test
+      - MYSQL_USER=user
+    volumes:
+      - ./data/mysql:/var/lib/mysql:rw
+  redis:
+    image: redis:4.0.11-alpine
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./data/conf/redis.conf:/usr/local/etc/redis/redis.conf

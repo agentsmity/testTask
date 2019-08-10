@@ -1,0 +1,15 @@
+{
+    "name": "test/task",
+    "require-dev": {
+        "php-amqplib/php-amqplib": "2.9.2",
+        "predis/predis": "~1.1.2",
+        "go/db": "2.2.13"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    }
+}
