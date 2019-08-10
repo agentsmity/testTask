@@ -9,7 +9,7 @@ class Application
 {
     public function __construct()
     {
-        $this->logger = new Logger;
+        $this->logger = new \components\Logger;
     }
 
     public function initialize(array $params): WorkerInterface {
