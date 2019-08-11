@@ -2,9 +2,9 @@
 namespace src;
 
 use src\main\WorkerInterface;
-use components\GeneratorWorker;
-use components\ConsumerWorker;
-use components\Loger;
+use src\components\ProducerWorker;
+use src\components\ConsumerWorker;
+use src\components\Logger;
 
 class Application
 {
@@ -41,7 +41,7 @@ class Application
         $this->logger->write($message);
     }
 
-    private function getProducerWorker(array $param): ProduserWorker
+    private function getProducerWorker(array $param): ProducerWorker
     {
         return new ProducerWorker(key($param), current($param));
     }

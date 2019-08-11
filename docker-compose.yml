@@ -16,10 +16,8 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_PASSWORD=test
       - MYSQL_USER=user
+      - MYSQL_DATABASE=test
     volumes:
       - ./data/mysql:/var/lib/mysql:rw
   redis:
     image: redis:4.0.11-alpine
-    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-    volumes:
-      - ./data/conf/redis.conf:/usr/local/etc/redis/redis.conf

@@ -3,26 +3,22 @@ namespace src\components;
 
 use src\main\AbstractWorker;
 
-class GeneratorWorker extends AbstractWorker
+class ConsumerWorker extends AbstractWorker
 {
-    protected $generatorFuction;
-
-    public function __construct(string $name, callable $generatorFuction)
+    public function __construct(string $name)
     {
         $this->name = $name;
-        $this->generatorFuction = $generatorFuction;
         parent::__construct();
     }
 
-    public function execute()
+    public function execute(): void
     {
         $number = $this->queue->rpop($this->name);
+        $count_field = 'count_' . substr($this->name, 0, 3);
 
         if ($number) {
-            $this->storage->execute("
-                SELECT * FROM task where id = 1 FOR UPDATE;
-                UPDATE task SET 
-            ");
+            $this->storage->query("SELECT sum, {$count_field} FROM task where id = 1 FOR UPDATE");
+            $this->storage->query("UPDATE task SET sum = sum + {$number}, {$count_field} = {$count_field} + 1");
         }
     }
 }

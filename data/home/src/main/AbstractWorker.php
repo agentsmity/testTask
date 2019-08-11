@@ -9,8 +9,6 @@ abstract class AbstractWorker implements WorkerInterface
     protected $storage;
     protected $queue;
 
-    protected $name;
-
     public function __construct()
     {
         $this->storage = DB::create(Constants::MYSQL_PARAMS, 'mysql');
