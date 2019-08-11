@@ -16,10 +16,13 @@ class GeneratorWorker extends AbstractWorker
 
     public function execute()
     {
-        $data = $this->queue->fetch($this->name);
-        $this->storage->execute("
-            SELECT * FROM task where id = 1 FOR UPDATE;
-            UPDATE task SET 
-        ");
+        $number = $this->queue->rpop($this->name);
+
+        if ($number) {
+            $this->storage->execute("
+                SELECT * FROM task where id = 1 FOR UPDATE;
+                UPDATE task SET 
+            ");
+        }
     }
 }

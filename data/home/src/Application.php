@@ -4,12 +4,13 @@ namespace src;
 use src\main\WorkerInterface;
 use components\GeneratorWorker;
 use components\ConsumerWorker;
+use components\Loger;
 
 class Application
 {
     public function __construct()
     {
-        $this->logger = new \components\Logger;
+        $this->logger = new Logger;
     }
 
     public function initialize(array $params): WorkerInterface {
@@ -59,18 +60,22 @@ class Application
                 usleep($usleep);
                 return round(pow((sqrt(5)+1)/2, $i) / sqrt(5));
             }
+
+            return null;
         };
     }
 
     private function getSimplyGeneratorFunction(?int $amount, ?int $usleep): callable
     {
-        return function() use ($amount, $usleep)  {
+        return function() use ($amount, $usleep) {
             static $i = 0;
 
             if ($i++ < $amount) {
                 usleep($usleep);
                 return $i;
             }
+
+            return null;
         };
     }
 }

@@ -13,8 +13,8 @@ abstract class AbstractWorker implements WorkerInterface
 
     public function __construct()
     {
-        $this->storage = DB::create(\Constants::MYSQL_PARAMS, 'mysql');
-        $this->queue = new Predis\Client(\Constants::REDIS_PARAMS);
+        $this->storage = DB::create(Constants::MYSQL_PARAMS, 'mysql');
+        $this->queue = new Client(Constants::REDIS_PARAMS);
     }
 
     abstract function execute(): void;
