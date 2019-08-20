@@ -58,7 +58,7 @@ class Application
 
             if ($i++ < $amount) {
                 usleep($usleep);
-                return round(pow((sqrt(5)+1)/2, $i) / sqrt(5));
+                return bcdiv(bcpow((sqrt(5)+1)/2, $i), sqrt(5), 0);
             }
 
             return null;
@@ -72,7 +72,7 @@ class Application
 
             if ($i++ < $amount) {
                 usleep($usleep);
-                return $i;
+                return bcsub(bcpow(2, $i), 1);
             }
 
             return null;

@@ -7,7 +7,7 @@ $db->query('DROP TABLE IF EXISTS task');
 $db->query('
     CREATE TABLE task (
         `id` tinyint(1) NOT NULL AUTO_INCREMENT,
-        `sum` bigint(12) unsigned NOT NULL DEFAULT 0,
+        `sum` text,
         `count_fib` smallint(4) NOT NULL DEFAULT 0,
         `count_sim` smallint(4) NOT NULL DEFAULT 0,
         PRIMARY KEY (`id`)

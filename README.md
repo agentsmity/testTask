@@ -10,12 +10,3 @@ Step by step:
     - . init.sh
     - . run.sh
 6. To check how it works go to mysql - docker exec -it testtask_mysql_1 mysql (if there is an error - try `docker exec -it testtask_mysql_1 bash` and then #mysql) and look at the table `test`.`task`
-
-
-But ooops... number of sum too large
-+----+----------------------+-----------+-----------+
-| id | sum                  | count_fib | count_sim |
-+----+----------------------+-----------+-----------+
-|  1 | 12200160415121820064 |        91 |       119 |
-+----+----------------------+-----------+-----------+
-
