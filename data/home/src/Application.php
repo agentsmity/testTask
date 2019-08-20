@@ -38,7 +38,7 @@ class Application
 
     public function log(string $message)
     {
-        $this->logger->write($message);
+        $this->logger->write('errors.log', $message);
     }
 
     private function getProducerWorker(array $param): ProducerWorker
