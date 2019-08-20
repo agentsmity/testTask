@@ -17,8 +17,10 @@ class ConsumerWorker extends AbstractWorker
         $count_field = 'count_' . substr($this->name, 0, 3);
 
         if ($number) {
-            $this->storage->query("SELECT sum, {$count_field} FROM task where id = 1 FOR UPDATE");
-            $this->storage->query("UPDATE task SET sum = sum + {$number}, {$count_field} = {$count_field} + 1");
+            $queryResult = $this->storage->query("SELECT sum, {$count_field} FROM task where id = 1 FOR UPDATE");
+            $rows = $queryResult->assoc();
+            $sum = bcadd($rows['sum'], $number);
+            $this->storage->query("UPDATE task SET sum = {$sum}, {$count_field} = {$count_field} + 1");
         }
     }
 }
