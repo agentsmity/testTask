@@ -17,7 +17,7 @@ class ProducerWorker extends AbstractWorker
         $number = ($this->generatorFuction)();
 
         if ($number) {
-            $this->logger->write($this->name . 'Producer.log', substr($number, 0, 5));
+            $this->logger->write($this->name . 'Producer.log', $number);
 
             $this->queue->lpush($this->name, $number);
         }

@@ -9,4 +9,7 @@ Step by step:
     - cd /home/testuser
     - . init.sh
     - . run.sh
-6. To check how it works go to mysql - docker exec -it testtask_mysql_1 mysql (if there is an error - try `docker exec -it testtask_mysql_1 bash` and then #mysql) and look at the table `test`.`task`
+6. To check how it works see logs in folder ~/testTask/data/home/log/*
+    - dump.log contains dump from table (sum, count_fib, count_sim) and first 5 symbols of calculated sum with name of worker
+    - produsers and consumers log - generated and received number of each type
+    - sum.log has one nubmer - calculated sum of 2000 fibonacci numbers and 5000 Mersenne's numbers

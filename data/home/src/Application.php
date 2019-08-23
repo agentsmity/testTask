@@ -59,11 +59,12 @@ class Application
     private function getFibonacciGeneratorFunction(?int $amount, ?int $usleep): callable
     {
         return function() use ($amount, $usleep) {
-            static $i = 0;
+            static $i = 1;
 
-            if ($i++ < $amount) {
+            if ($i++ <= $amount) {
                 usleep($usleep);
-                return bcdiv(bcpow((sqrt(5)+1)/2, $i), sqrt(5), 0);
+                $num = explode('.', bcdiv(bcpow((sqrt(5)+1)/2, $i), sqrt(5), 1));
+                return bcadd($num[0], round(intval($num[1])/10));
             }
 
             return null;
@@ -73,9 +74,9 @@ class Application
     private function getSimplyGeneratorFunction(?int $amount, ?int $usleep): callable
     {
         return function() use ($amount, $usleep) {
-            static $i = 0;
+            static $i = 1;
 
-            if ($i++ < $amount) {
+            if ($i++ <= $amount) {
                 usleep($usleep);
                 return bcsub(bcpow(2, $i), 1);
             }
