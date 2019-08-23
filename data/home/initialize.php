@@ -2,7 +2,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 //mysql migration
-$db = go\DB\DB::create(src\main\Constants::MYSQL_PARAMS, 'mysql');
+$db = go\DB\DB::create(src\config\Constants::MYSQL_PARAMS, 'mysql');
 $db->query('DROP TABLE IF EXISTS task');
 $db->query('
     CREATE TABLE task (
@@ -17,6 +17,6 @@ $db->query('INSERT INTO task (id) VALUES (1)');
 
 
 //redis migration
-$redis = new Predis\Client(src\main\Constants::REDIS_PARAMS);
+$redis = new Predis\Client(src\config\Constants::REDIS_PARAMS);
 $redis->ltrim('fibonacci', -1, 0);
 $redis->ltrim('simply', -1, 0);

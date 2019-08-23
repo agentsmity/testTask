@@ -1,5 +1,5 @@
 <?php
-namespace src\main;
+namespace src\components\workers;
 
 interface WorkerInterface
 {

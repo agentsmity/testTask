@@ -1,7 +1,5 @@
 <?php
-namespace src\components;
-
-use src\main\AbstractWorker;
+namespace src\components\workers;
 
 class ProducerWorker extends AbstractWorker
 {

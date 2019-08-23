@@ -1,23 +1,28 @@
 <?php
 namespace src;
 
-use src\main\WorkerInterface;
-use src\components\ProducerWorker;
-use src\components\ConsumerWorker;
+use src\components\workers\WorkerInterface;
+use src\components\workers\ProducerWorker;
+use src\components\workers\ConsumerWorker;
 use src\components\Logger;
+use src\components\Request;
 
 class Application
 {
+    private $logger;
+    private $request;
+
     public function __construct()
     {
         $this->logger = new Logger;
+        $this->request = new Request;
     }
 
-    public function initialize(array $params): WorkerInterface {
-        $workerType = $params['t'] ?? '';
-        $numberType = $params['n'] ?? '';
-        $amount = $params['amount'] ?? null;
-        $usleep = $params['usleep'] ?? null;
+    public function initialize(): WorkerInterface {
+        $workerType = $this->request->t;
+        $numberType = $this->request->n;
+        $amount = $this->request->amount;
+        $usleep = $this->request->usleep;
 
         $methodName = 'get' . ucfirst($workerType) . 'Worker';
         $generatorFunction = 'get' . ucfirst($numberType) . 'GeneratorFunction';

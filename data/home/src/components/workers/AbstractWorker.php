@@ -1,9 +1,10 @@
 <?php
-namespace src\main;
+namespace src\components\workers;
 
 use go\DB\DB;
 use Predis\Client;
 use src\components\Logger;
+use src\config\Constants;
 
 abstract class AbstractWorker implements WorkerInterface
 {

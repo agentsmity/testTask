@@ -1,5 +1,5 @@
 <?php
-namespace src\main;
+namespace src\config;
 
 class Constants
 {
@@ -10,7 +10,7 @@ class Constants
         'dbname'   => 'test',
         'charset'  => 'utf8',
     ];
-    
+
     public const REDIS_PARAMS = [
         'host' => 'redis',
         'port' => 6379,
