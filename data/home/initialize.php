@@ -20,3 +20,6 @@ $db->query('INSERT INTO task (id) VALUES (1)');
 $redis = new Predis\Client(src\config\Constants::REDIS_PARAMS);
 $redis->ltrim('fibonacci', -1, 0);
 $redis->ltrim('simply', -1, 0);
+
+//clear logs
+exec('rm /home/testuser/log/*');
