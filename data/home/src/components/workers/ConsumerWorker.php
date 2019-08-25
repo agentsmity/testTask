@@ -3,13 +3,7 @@ namespace src\components\workers;
 
 class ConsumerWorker extends AbstractWorker
 {
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-        parent::__construct();
-    }
-
-    public function execute(): void
+    public function execute($i): void
     {
         $number = $this->queue->rpop($this->name);
         $count_field = 'count_' . substr($this->name, 0, 3);
